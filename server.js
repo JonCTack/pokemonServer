@@ -20,6 +20,16 @@ app.get("/get_pokemon_data", (req,res) => {
     res.send(pokemon)
 })
 
+app.delete('/remove_pokemon/:name', (req,res)=>{
+    let poke = req.params.name
+    pokemon.forEach((el, id) => {
+        if(el.name === poke.toLowerCase()){
+            pokemon.splice(id, 1)
+        }
+    })
+    console.log(pokemon)
+})
+
 app.listen(port, () => {
     console.log(`Server is Listening on ` + port)
 })
